@@ -24,7 +24,9 @@ class Shiritori{
   Shiritori({this.words,this.game_over});
 
   bool play(String word) {}
-  void restart() {}
+  String restart() {
+    return "game restarted";
+  }
 }
 
 main() {
