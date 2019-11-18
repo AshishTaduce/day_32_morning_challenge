@@ -17,9 +17,13 @@
 // game_over boolean to false. It should return "game restarted".
 
 class Shiritori{
+
   List words;
   bool game_over;
-  void play() {}
+
+  Shiritori({this.words,this.game_over});
+
+  bool play(String word) {}
   void restart() {}
 }
 
