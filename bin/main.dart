@@ -17,11 +17,52 @@
 // game_over boolean to false. It should return "game restarted".
 
 class Shiritori{
-  List words;
-  bool game_over;
-  bool play(String word) {}
-  String restart() {}
+  List<String> words = [];
+  List emptyList = [];
+
+  bool game_over = false;
+
+  bool play(String word,) {
+
+    while(!game_over){
+      if(words.isEmpty){
+        print(words);
+        words.add(word);
+        return true;
+      }
+      else if((!words.contains(word) && word[0] == words.last[words.last.length - 1]))
+      {
+        print('entered add word $word');
+        words.add(word);
+        game_over = false;
+        print(word);
+        print(words);
+        return true;
+      }
+      else {
+        print('Invalid Input Game Over');
+        game_over = true;
+        return false;
+      }
+    }
+  }
+
+  String restart() {
+    game_over = false;
+    words = [];
+    return 'game restarted';
+  }
 }
 main() {
+  List<String> words = ['Hello', 'apple',];
+  List<String> words2 = ['Hello', "apple"];
+  print(words2.isEmpty);
+  print(words.isEmpty);
+
+  print(words);
+
+  print('$words' == '$words2');
+
+  return('$words' == '$words2');
   //just test
 }
