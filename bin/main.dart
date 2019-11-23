@@ -15,7 +15,7 @@
 // (the word should follow rules #1 and #2 above).
 // - restart: a method that sets the words list to an empty one [] and sets the
 // game_over boolean to false. It should return "game restarted".
-
+//TODO implement proper restart
 class Shiritori{
   List<String> words = [];
   List emptyList = [];
@@ -23,27 +23,29 @@ class Shiritori{
   bool game_over = false;
 
   bool play(String word,) {
+    if (game_over) {
+      print('game is over, please restart.');
+      return false;
+    }
 
-    while(!game_over){
-      if(words.isEmpty){
-        print(words);
-        words.add(word);
-        return true;
-      }
-      else if((!words.contains(word) && word[0] == words.last[words.last.length - 1]))
-      {
-        print('entered add word $word');
-        words.add(word);
-        game_over = false;
-        print(word);
-        print(words);
-        return true;
-      }
-      else {
-        print('Invalid Input Game Over');
-        game_over = true;
-        return false;
-      }
+    if (words.isEmpty) {
+      print(words);
+      words.add(word);
+      return true;
+    }
+    else if ((!words.contains(word) &&
+        word[0] == words.last[words.last.length - 1])) {
+      print('entered add word $word');
+      words.add(word);
+      game_over = false;
+      print(word);
+      print(words);
+      return true;
+    }
+    else {
+      print('Invalid Input Game Over');
+      game_over = true;
+      return false;
     }
   }
 
@@ -53,16 +55,6 @@ class Shiritori{
     return 'game restarted';
   }
 }
+
 main() {
-  List<String> words = ['Hello', 'apple',];
-  List<String> words2 = ['Hello', "apple"];
-  print(words2.isEmpty);
-  print(words.isEmpty);
-
-  print(words);
-
-  print('$words' == '$words2');
-
-  return('$words' == '$words2');
-  //just test
 }
